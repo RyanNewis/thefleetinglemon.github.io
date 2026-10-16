@@ -233,3 +233,7 @@ nav a,
 .section-card p {
   font-family: 'Special Elite', monospace;
 }
+    /* Typewriter font for archive section heading */
+.section-heading h2 {
+  font-family: 'Special Elite', monospace;
+}
