@@ -1,1 +1,253 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Albums | The Fleeting Lemon</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=Special+Elite&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <style>
+    .album-intro {
+      padding: 75px 6% 45px;
+    }
+
+    .album-intro h1 {
+      font-size: clamp(65px, 10vw, 135px);
+      margin: 20px 0 30px;
+    }
+
+    .album-intro p {
+      font-family: var(--font-typewriter);
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 650px;
+    }
+
+    .genre-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 0 6% 45px;
+    }
+
+    .genre-filters button {
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--paper);
+      font-family: var(--font-typewriter);
+      font-size: 13px;
+      padding: 12px 18px;
+      cursor: pointer;
+    }
+
+    .genre-filters button:hover,
+    .genre-filters button.active {
+      background: var(--red);
+      border-color: var(--red);
+      color: var(--bg);
+    }
+
+    .album-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 40px 25px;
+      padding: 0 6% 100px;
+    }
+
+    .album-card {
+      display: block;
+      min-width: 0;
+    }
+
+    .album-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      background: #292929;
+      filter: grayscale(35%);
+      transition: filter 0.3s, transform 0.3s;
+    }
+
+    .album-card:hover img {
+      filter: grayscale(0%);
+      transform: scale(1.02);
+    }
+
+    .album-card h2 {
+      font-family: var(--font-uncial);
+      font-size: clamp(19px, 2vw, 27px);
+      line-height: 1.2;
+      margin: 18px 0 8px;
+    }
+
+    .album-card p {
+      font-family: var(--font-typewriter);
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .album-card[hidden] {
+      display: none;
+    }
+
+    @media (max-width: 650px) {
+      .album-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .album-intro {
+        padding-top: 55px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <a href="/" class="logo">The Fleeting Lemon</a>
+
+    <nav>
+      <a href="/albums/">Albums</a>
+      <a href="/gigs/">Gigs</a>
+      <a href="/musings/">Musings</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="album-intro">
+      <span class="eyebrow">The record collection</span>
+      <h1>Albums</h1>
+      <p>
+        Records I've loved, lived with, returned to,
+        and occasionally obsessed over.
+        A personal archive of music and thoughts.
+      </p>
+    </section>
+
+    <div class="genre-filters" aria-label="Filter albums by genre">
+      <button type="button" class="active" data-genre="all" aria-pressed="true">All</button>
+      <button type="button" data-genre="post-metal" aria-pressed="false">Post-Metal</button>
+      <button type="button" data-genre="post-rock" aria-pressed="false">Post-Rock</button>
+      <button type="button" data-genre="hardcore" aria-pressed="false">Hardcore</button>
+      <button type="button" data-genre="alternative" aria-pressed="false">Alternative</button>
+      <button type="button" data-genre="experimental" aria-pressed="false">Experimental</button>
+      <button type="button" data-genre="soul" aria-pressed="false">Soul / Funk</button>
+    </div>
+
+    <section class="album-grid" aria-label="Album collection">
+
+      <!-- ISIS -->
+
+      <article class="album-card" data-genre="post-metal">
+        <img
+          src="https://coverartarchive.org/release/e27dc788-3911-4785-b39c-abed4ee2d1cc/front-500"
+          alt="Panopticon album cover by ISIS"
+          loading="lazy">
+        <h2>Panopticon</h2>
+        <p>ISIS / 2004 / Post-Metal</p>
+      </article>
+
+      <!-- WHEN COLORS ARE FADING -->
+
+      <article class="album-card" data-genre="post-rock">
+        <img
+          src="https://coverartarchive.org/release/2e687fe4-0a92-49b1-9641-7f5365a537f6/front-500"
+          alt="Past Summers Notes album cover by When Colors Are Fading"
+          loading="lazy">
+        <h2>Past Summers Notes</h2>
+        <p>When Colors Are Fading / 2022 / Post-Rock</p>
+      </article>
+
+      <!-- HATEBREED -->
+
+      <article class="album-card" data-genre="hardcore">
+        <img
+          src="https://coverartarchive.org/release/5cdea70e-f024-41a3-a089-57771ee57d79/front-500"
+          alt="The Rise of Brutality album cover by Hatebreed"
+          loading="lazy">
+        <h2>The Rise of Brutality</h2>
+        <p>Hatebreed / 2003 / Hardcore</p>
+      </article>
+
+      <!-- RADIOHEAD -->
+
+      <article class="album-card" data-genre="alternative">
+        <img
+          src="https://coverartarchive.org/release/f947caf6-2da7-3a57-aa4b-0d5e374226ce/front-500"
+          alt="Kid A album cover by Radiohead"
+          loading="lazy">
+        <h2>Kid A</h2>
+        <p>Radiohead / 2000 / Alternative</p>
+      </article>
+
+      <!-- TAPE -->
+
+      <article class="album-card" data-genre="experimental">
+        <img
+          src="https://placehold.co/500x500/292929/eee9e0?text=Luminarium"
+          alt="Temporary artwork placeholder for Luminarium by Tape"
+          loading="lazy">
+        <h2>Luminarium</h2>
+        <p>Tape / 2008 / Experimental</p>
+      </article>
+
+      <!-- SURPRISE CHEF -->
+
+      <article class="album-card" data-genre="soul">
+        <img
+          src="https://coverartarchive.org/release/faee04ad-fcad-4be5-a0c0-d6791bc709da/front-500"
+          alt="Superb album cover by Surprise Chef"
+          loading="lazy">
+        <h2>Superb</h2>
+        <p>Surprise Chef / 2025 / Soul / Funk</p>
+      </article>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <span>THE FLEETING LEMON</span>
+    <span>A personal music archive.</span>
+  </footer>
+
+  <script>
+    const filterButtons = document.querySelectorAll(
+      ".genre-filters button"
+    );
+
+    const albumCards = document.querySelectorAll(
+      ".album-card"
+    );
+
+    filterButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const selectedGenre = button.dataset.genre;
+
+        filterButtons.forEach(item => {
+          const isActive = item === button;
+          item.classList.toggle("active", isActive);
+          item.setAttribute("aria-pressed", String(isActive));
+        });
+
+        albumCards.forEach(card => {
+          card.hidden =
+            selectedGenre !== "all" &&
+            card.dataset.genre !== selectedGenre;
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
+
