@@ -1,0 +1,7 @@
+
+title: The Fleeting Lemon
+description: A personal music archive
+
+collections:
+  albums:
+    output: true
