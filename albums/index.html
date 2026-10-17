@@ -27,11 +27,21 @@
       max-width: 650px;
     }
 
+    /* Genre filters and sorting */
+
+    .album-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 0 6% 45px;
+    }
+
     .genre-filters {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      padding: 0 6% 45px;
     }
 
     .genre-filters button {
@@ -50,6 +60,36 @@
       border-color: var(--red);
       color: var(--bg);
     }
+
+    .sort-control {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .sort-control label {
+      font-family: var(--font-typewriter);
+      font-size: 13px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .sort-control select {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      color: var(--paper);
+      font-family: var(--font-typewriter);
+      font-size: 13px;
+      padding: 12px 14px;
+      cursor: pointer;
+    }
+
+    .sort-control select:hover,
+    .sort-control select:focus {
+      border-color: var(--red);
+    }
+
+    /* Album grid */
 
     .album-grid {
       display: grid;
@@ -105,6 +145,11 @@
       .album-intro {
         padding-top: 55px;
       }
+
+      .album-controls {
+        align-items: flex-start;
+        flex-direction: column;
+      }
     }
   </style>
 </head>
@@ -132,22 +177,37 @@
       </p>
     </section>
 
-    <div class="genre-filters" aria-label="Filter albums by genre">
-      <button type="button" class="active" data-genre="all" aria-pressed="true">All</button>
-      <button type="button" data-genre="post-metal" aria-pressed="false">Post-Metal</button>
-      <button type="button" data-genre="post-rock" aria-pressed="false">Post-Rock</button>
-      <button type="button" data-genre="hardcore" aria-pressed="false">Hardcore</button>
-      <button type="button" data-genre="alternative" aria-pressed="false">Alternative</button>
-      <button type="button" data-genre="folk" aria-pressed="false">Folk</button>
-      <button type="button" data-genre="soul" aria-pressed="false">Soul / Funk</button>
+    <div class="album-controls">
+
+      <div class="genre-filters" aria-label="Filter albums by genre">
+        <button type="button" class="active" data-genre="all" aria-pressed="true">All</button>
+        <button type="button" data-genre="post-metal" aria-pressed="false">Post-Metal</button>
+        <button type="button" data-genre="post-rock" aria-pressed="false">Post-Rock</button>
+        <button type="button" data-genre="hardcore" aria-pressed="false">Hardcore</button>
+        <button type="button" data-genre="alternative" aria-pressed="false">Alternative</button>
+        <button type="button" data-genre="folk" aria-pressed="false">Folk</button>
+        <button type="button" data-genre="soul" aria-pressed="false">Soul / Funk</button>
+      </div>
+
+      <div class="sort-control">
+        <label for="album-sort">Sort by</label>
+
+        <select id="album-sort">
+          <option value="default">Default order</option>
+          <option value="artist-asc">Artist: A–Z</option>
+          <option value="artist-desc">Artist: Z–A</option>
+          <option value="title-asc">Album: A–Z</option>
+          <option value="title-desc">Album: Z–A</option>
+        </select>
+      </div>
+
     </div>
 
     <section class="album-grid" aria-label="Album collection">
 
-      
       <!-- ISIS -->
-      
-      <article class="album-card" data-genre="post-metal">
+
+      <article class="album-card" data-genre="post-metal" data-artist="ISIS" data-title="Panopticon">
         <a href="/albums/panopticon/">
           <img
             src="https://coverartarchive.org/release/e27dc788-3911-4785-b39c-abed4ee2d1cc/front-500"
@@ -158,10 +218,9 @@
         <p>ISIS / 2004 / Post-Metal</p>
       </article>
 
-
       <!-- WHEN COLORS ARE FADING -->
 
-      <article class="album-card" data-genre="post-rock">
+      <article class="album-card" data-genre="post-rock" data-artist="When Colors Are Fading" data-title="Past Summers Notes">
         <a href="/albums/past-summers-notes/">
           <img
             src="https://coverartarchive.org/release/2e687fe4-0a92-49b1-9641-7f5365a537f6/front-500"
@@ -172,10 +231,9 @@
         <p>When Colors Are Fading / 2022 / Post-Rock</p>
       </article>
 
-      
       <!-- HATEBREED -->
-      
-      <article class="album-card" data-genre="hardcore">
+
+      <article class="album-card" data-genre="hardcore" data-artist="Hatebreed" data-title="The Rise of Brutality">
         <a href="/albums/the-rise-of-brutality/">
           <img
             src="https://coverartarchive.org/release/5cdea70e-f024-41a3-a089-57771ee57d79/front-500"
@@ -186,10 +244,9 @@
         <p>Hatebreed / 2003 / Hardcore</p>
       </article>
 
-      
       <!-- RADIOHEAD -->
-      
-      <article class="album-card" data-genre="alternative">
+
+      <article class="album-card" data-genre="alternative" data-artist="Radiohead" data-title="Kid A">
         <a href="/albums/kid-a/">
           <img
             src="https://coverartarchive.org/release/f947caf6-2da7-3a57-aa4b-0d5e374226ce/front-500"
@@ -200,11 +257,9 @@
         <p>Radiohead / 2000 / Alternative</p>
       </article>
 
-
-      
       <!-- NICK DRAKE -->
-      
-      <article class="album-card" data-genre="folk">
+
+      <article class="album-card" data-genre="folk" data-artist="Nick Drake" data-title="Five Leaves Left">
         <a href="/albums/five-leaves-left/">
           <img
             src="https://coverartarchive.org/release-group/b9c4fc17-0dc5-3aa5-b1b9-08e1446e5bea/front-500"
@@ -215,11 +270,9 @@
         <p>Nick Drake / 1969 / Folk</p>
       </article>
 
-
-      
       <!-- SURPRISE CHEF -->
-      
-      <article class="album-card" data-genre="soul">
+
+      <article class="album-card" data-genre="soul" data-artist="Surprise Chef" data-title="Superb">
         <a href="/albums/superb/">
           <img
             src="https://coverartarchive.org/release/faee04ad-fcad-4be5-a0c0-d6791bc709da/front-500"
@@ -229,7 +282,6 @@
         </a>
         <p>Surprise Chef / 2025 / Soul / Funk</p>
       </article>
-
 
     </section>
 
@@ -245,9 +297,19 @@
       ".genre-filters button"
     );
 
-    const albumCards = document.querySelectorAll(
-      ".album-card"
+    const albumGrid = document.querySelector(".album-grid");
+
+    const albumCards = Array.from(
+      document.querySelectorAll(".album-card")
     );
+
+    const sortSelect = document.querySelector("#album-sort");
+
+    const originalOrder = new Map(
+      albumCards.map((card, index) => [card, index])
+    );
+
+    /* Genre filtering */
 
     filterButtons.forEach(button => {
       button.addEventListener("click", () => {
@@ -264,6 +326,36 @@
             selectedGenre !== "all" &&
             card.dataset.genre !== selectedGenre;
         });
+      });
+    });
+
+    /* Album sorting */
+
+    sortSelect.addEventListener("change", () => {
+      const sortValue = sortSelect.value;
+
+      const sortedCards = [...albumCards];
+
+      sortedCards.sort((a, b) => {
+        if (sortValue === "default") {
+          return originalOrder.get(a) - originalOrder.get(b);
+        }
+
+        const sortByArtist = sortValue.startsWith("artist");
+
+        const key = sortByArtist ? "artist" : "title";
+
+        const direction = sortValue.endsWith("desc") ? -1 : 1;
+
+        return direction * a.dataset[key].localeCompare(
+          b.dataset[key],
+          undefined,
+          { sensitivity: "base" }
+        );
+      });
+
+      sortedCards.forEach(card => {
+        albumGrid.appendChild(card);
       });
     });
   </script>
