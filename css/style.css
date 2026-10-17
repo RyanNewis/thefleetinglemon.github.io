@@ -56,9 +56,9 @@ a {
 
 .logo {
   font-family: var(--font-typewriter);
-  font-weight: 900;
+  font-weight: bold;
   font-size: 16px;
-  letter-spacing: -0.5px;
+  letter-spacing: 2px;
   text-transform: uppercase;
 }
 
